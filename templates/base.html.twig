@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{{ 'app.title'|trans }} v{{ 'app.version'|trans }} {{ app.environment }}{% endblock %}</title>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        {% endblock %}
+
+    </head>
+    <body>
+        <header>
+            <nav class="navbar-inverse">
+                {% block menu %}
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
+                                <span><i class="fa fa-bars"></i></span>
+                            </button>
+                            <a class="navbar-brand" title="{{ 'menu.welcome'|trans }}" href="{{ path('home') }}">{{ 'app.title'|trans }} v{{ 'app.version'|trans }}</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a href="{{ path('admin') }}" title="{{ 'admin.home'|trans }}">{{ 'admin.home'|trans }}</a></li>
+                                {% endif %}
+
+                                {% if is_granted('ROLE_USER') %}
+                                    <li><a href="{{ path('tasks') }}" title="{{ 'menu.tasks'|trans }}">{{ 'menu.tasks'|trans }}</a></li>
+                                {% endif %}
+
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right" id="menuDroite">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'menu.language.label'|trans }}</a>
+                                    <ul id="flags" class="dropdown-menu">
+                                        <li><a href="{{ path('language', {'code': 'en'}) }}" title="English"><img src="/images/flags/en.png" alt="en" /></a></li>
+                                        <li><a href="{{ path('language', {'code': 'es'}) }}" title="Español"><img src="/images/flags/es.png" alt="es" /></a></li>
+                                        <li><a href="{{ path('language', {'code': 'fr'}) }}" title="Français"><img src="/images/flags/fr.png" alt="fr" /></a></li>
+                                    </ul>
+                                </li>
+
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <li id="menuProfile" class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ app.user.firstName }} {{ app.user.lastName }}</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ path('see_profile') }}" title="{{ 'login.see_profil'|trans }}">{{ 'login.see_profil'|trans }}</a></li>
+                                            <li><a href="{{ path('logout') }}" title="{{ 'login.log_out'|trans }}">{{ 'login.log_out'|trans }} <i class="fa fa-sign-out"></i></a></li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                    </div>
+                {% endblock %}
+            </nav>
+        </header>
+
+        <main role="main" class="container">
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer>
+            <p>
+                <a href="{{ path('home') }}" title="{{ 'menu.welcome'|trans }}">{{ 'app.title'|trans }} v{{ 'app.version'|trans }} {{ app.environment }}</a>
+                <span> - © 2018 - </span>
+                <a href="{{ path('about') }}" title="{{ 'menu.about'|trans }}">MP3000</a>
+            </p>
+        </footer>
+        <div id="footer-phantom"></div>
+
+        {% block javascripts %}
+            <script src="{{ asset('build/app.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

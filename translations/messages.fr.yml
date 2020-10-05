@@ -1,0 +1,176 @@
+app:
+    title: CSV Mania
+    version: 0.1
+
+admin:
+    home: Dashboard
+
+dnd_file:
+    bad_format: Mauvais format, il nous faut du csv !
+    drop_zone: Cliquer ou faire glisser un fichier ici
+    file: Fichier csv
+    success: Fichier uploadé dans le cache (%n lignes)
+
+entity:
+    Answer:
+        flash:
+            already_answered: Déjà répondu
+            assignment_done: Tâche terminée
+            bad_field: Ce champs n'est pas à répondre
+            entry_saved: Saisie validée
+            mandatory: La saisie ne peut pas être vide
+        label: Réponse
+        list: Liste des réponses
+        value: Réponse
+
+    Assignment:
+        assigned_at: Assignée le
+        assigned_to: Assignée à
+        continue: Continuer la saisie
+        done_at: Terminée le
+        flash:
+            already_assigned: Cette tâche vous est déjà assignée
+            bad_format: Format non géré
+            no_more_entry: Pas de saisie pour cette tâche
+            success: Tâche assignée avec succès
+        label: Assignation
+        list: Liste des assignations
+        nb_answers: Nb réponses
+        nb_fields: Nb champs
+        nb_contents: Nb messages
+        status: Statut
+        status0: Saisie en cours
+        status1: Saisie à valider
+        status2: Validée
+        validated_at: Validée le
+        validated_by: Validée par
+
+    Content:
+        add: Saisie
+        id_sparkup: id Sparkup
+        label: Message
+        list: Liste des messages
+
+    Feeling:
+        helper1: 1 si le mail concerne la campagne, 0 sinon
+        helper2: Nombre d'informations de contact
+        helper3: Nombre de questions
+        helper4: 1 si le mail est écrit par un humain, 0 sinon
+        helper5: Plus la jauge est remplie, plus l'auteur vous semble intéressé par la campagne
+        helper5min: Pas du tout interessé
+        helper5max: Très interessé
+        helper6: 1 si l'auteur souhaite être recontacter plus tard, 0 sinon
+        helper7: 1 si l'auteur souhaite se désabonner, 0 sinon
+        helper8: 1 si l'auteur est interessé par la campagne, 0 sinon
+        helper9: 1 si le message n'est pas un message brut, 0 sinon
+        label: Jugement
+        list: Liste des jugements
+
+    Field:
+        format: Format
+        format1: Booléen
+        format2: Nombre
+        format3: Jauge
+        label: Champ
+        labels: Champs
+        list: Liste des champs
+
+    Task:
+        add: Créer une tâche
+        and_x_more: Et %x% autre(s)...
+        created_at: Créée le
+        created_by: Créée par
+        deadline: Deadline
+        del: Supprimer une tâche
+        done_tasks: Tâches terminées
+        label: Tâche
+        language: Langue
+        list: Liste des tâches
+        name: Nom
+        no_more_assignation: Cette tâche n'est plus ouverte à la saisie
+        none: Aucune tâche
+        nb_answer_needed: Nombre d'assignations requises
+        ongoing_tasks: Tâches en cours de saisie
+        pick: Démarrer la saisie
+        priority: Priorité
+        priority1: Haute
+        priority2: Normale
+        priority3: Faible
+        show: Voir la tâche
+        status: Statut
+        status0: Tâche à assigner
+        status1: Tâche en cours
+        status2: Tâche à valider
+        status3: Tâche validée
+        to_assign_tasks: Tâches à assigner
+        todo_tasks: Tâches à saisir
+        to_validate_tasks: Tâches à valider
+        upd: Modifier une tâche
+        validate: Valider une tâche
+
+    User:
+        active: Actif
+        creeated_at: Créé le
+        first_name: Prénom
+        label: Utilisateur
+        last_name: Nom
+        list: Liste des utilisateurs
+        nb_failed_connexion: Nombre de tentative échouée
+        password: Mot de passe
+        roles: Roles
+        username: Email
+
+form:
+    back: Retour
+    cancel: Annuler
+    empty: ""
+    no: Non
+    required: Ce champs est obligatoire
+    reset: Réinitialiser
+    submit: Valider
+    unauthorized: Action non autorisée
+    yes: Oui
+
+list:
+    filter: Filtre
+    list: Liste
+    none: Aucun
+    page: Page
+    sort: Tri
+
+menu:
+    about: A propos
+    language:
+        label: Langues
+        en: Anglais
+        es: Espagnol
+        fr: Français
+    tasks: Mes tâches
+    welcome: Accueil
+
+login:
+    change_pwd: Modifier le mot de passe
+    change_pwd_err:
+        bad_confirm: Les deux mots de passe saisis ne correspondent pas
+        bad_format: Le mot de passe doit faire au moins 8 caractères
+        bad_auth: Mauvaise authentification
+    confirm_password: Confirmer mot de passe
+    current_password: Mot de passe actuel
+    log_in: Connexion
+    log_out: Déconnexion
+    new_password: Nouveau mot de passe
+    remember_me: Se souvenir
+    see_profil: Voir profil
+    title: Connexion
+    username: Login
+
+select:
+    a_lot: Beaucoup
+    no: Non
+    not_at_all: Pas du tout
+    yes: Oui
+
+show:
+    back: Précédent
+    info_gen: Informations générales :
+    next: Suivant

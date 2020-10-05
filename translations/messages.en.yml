@@ -1,0 +1,118 @@
+app:
+    title: CSV Mania
+    version: 0.1
+
+menu:
+    about: About
+    welcome: Home
+    language:
+        label: Languages
+        en: English
+        es: Spanish
+        fr: French
+
+login:
+    change_pwd: Change password
+    current_password: Current password
+    new_password: New password
+    confirm_password: Confirm password
+    change_pwd_err:
+        bad_confirm: Both passwords don't match
+        bad_format: Password need to have at least 8 types
+        bad_auth: Bad authentication
+    log_in: Log in
+    log_out: Log out
+    remember_me: Remember me
+    see_profil: See profil
+    title: Connexion
+    username: Username
+
+admin:
+    home: Dashboard
+    submit: Submit
+
+list:
+    list: list
+
+show:
+    info_gen: General info :
+
+form:
+    required: This field is mandatory
+    unauthorized: Permission refused
+
+entity:
+    name: Nom
+    to: to
+    at: at
+
+user:
+    label: User
+    first_name: First name
+    last_name: Last name
+    username: Email
+    password: Password
+
+task:
+    done_tasks: Done tasks
+    none: aucune
+    ongoing: Ongoing task
+    next: Next task
+    label: Task
+    category: Category
+    cat1: Cat1
+    cat2: Cat2
+    created_by: Created by
+    assigned_to: Assigned to
+    validated_by: Validated by
+    created_at: Created at
+    assigned_at: Assigned at
+    done_at: Done at
+    validated_at: Validated at
+    deadline: Deadline
+    file: Csv file
+    home: My tasks
+    add: Add a task
+    upd: Update task
+    del: Delete task
+    list: List of tasks
+    todo: Tasks to do
+    fields: Fields
+    tovalidate: Tasks to validate
+    nb_answer_needed: Number of answer needed
+    priority:
+        label: Priority
+        1: High
+        2: Normal
+        3: Low
+
+feeling:
+    label:
+        is_campaign: is campaign
+        nb_contact_info: nb contact info
+        nb_questions: nb questions
+        is_autore: is author
+        interest: interest
+        is_contact_me_later: is contact me later
+        is_unsubscribe: is unsubscribe
+        is_interest: is interest
+        is_dirty: is dirty
+    format:
+        1: boolean
+        2: count
+        3: gauge
+
+content:
+    name: Message
+    google: Google
+    input: Input
+    admin_comment: Input admin
+    list: List of messages
+
+dnd_file:
+    drop_zone: Click or drop a file here
+    bad_format: Bad format, we need a csv file !
+    success: File uploaded in cache (%n rows)
+
+progress_bar:
+    label: __d__% completed

@@ -1,0 +1,104 @@
+{% extends 'layouts/site.html.twig' %}
+
+{% block title %}{{ 'menu.tasks'|trans }}{% endblock %}
+
+{% block content %}
+
+    {% for flashMessage in app.session.flashbag.get('danger') %}
+        <div class="alert alert-danger">{{ flashMessage|trans }}</div>
+    {% endfor %}
+
+    <div class="mpblock row">
+        <h4>{{ 'entity.Task.ongoing_tasks'|trans }}</h4>
+        <div class="mpcontent">
+            {% if ongoingAssignments|length == 0 %}
+                {{ 'entity.Task.none'|trans }}
+            {%  else %}
+                {% for row in ongoingAssignments %}
+                    <div class="col-md-4 mpssblock">
+                        <a class="mpcontent text-center" href="{{ path('fill_assignment', {id: row.0.id}) }}" title="{{ 'entity.Assignment.continue'|trans }}">
+                            <h5>{{ row.0.task.name }}</h5>
+                            <span>
+                            <div class="progress progress-task mptooltype" data-toggle="tooltype">
+                                <div id="barDone" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ row.nb_answers }}" aria-valuemax="{{ row.nb_fields*row.nb_contents }}"></div>
+                            </div>
+                            <div class="prio{{ row.0.task.deadline < "now"|date('Y-m-d') ? '1' : '0' }}">
+                                <i class="fa fa-calendar" ></i>
+                                <span>{{ 'entity.Task.deadline'|trans }} : {{ row.0.task.deadline|localizeddate('medium', 'none') }}</span>
+                            </div>
+                            <div class="prio{{ row.0.task.priority }}">
+                                <i class="fa fa-clock-o" ></i>
+                                <span>{{ 'entity.Task.priority'|trans }} : {{ ('entity.Task.priority'~row.0.task.priority)|trans }}</span>
+                            </div>
+                            <div>
+                                <i class="fa fa-files-o" ></i>
+                                <span>{{ 'entity.Assignment.nb_contents'|trans }} : {{ row.nb_contents }}</span>
+                            </div>
+                            <div>
+                                <i class="fa fa-columns" ></i>
+                                <span>{{ 'entity.Assignment.nb_fields'|trans }} : {{ row.nb_fields }}</span>
+                            </div>
+                        </a>
+
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mpblock row">
+        <h4>{{ 'entity.Task.todo_tasks'|trans }}</h4>
+        <div class="mpcontent">
+            {% if nextTodoTasks |length == 0 %}
+                {{ 'entity.Task.none'|trans }}
+            {%  else %}
+                {% for row in nextTodoTasks %}
+                    <div class="col-md-4 mpssblock">
+                        <a class="mpcontent text-center" href="{{ path('pick_task', {id: row.0.id}) }}" title="{{ 'entity.Task.pick'|trans }}">
+                            <h5>{{ row.0.name }}</h5>
+
+                            <div class="prio{{ row.0.deadline < "now"|date('Y-m-d') ? '1' : '0' }}">
+                                <i class="fa fa-calendar" ></i>
+                                <span>{{ 'entity.Task.deadline'|trans }} : {{ row.0.deadline|localizeddate('medium', 'none') }}</span>
+                            </div>
+                            <div class="prio{{ row.0.priority }}">
+                                <i class="fa fa-clock-o" ></i>
+                                <span>{{ 'entity.Task.priority'|trans }} : {{ ('entity.Task.priority'~row.0.priority)|trans }}</span>
+                            </div>
+                            <div>
+                                <i class="fa fa-files-o" ></i>
+                                <span>{{ 'entity.Assignment.nb_contents'|trans }} : {{ row.nb_contents }}</span>
+                            </div>
+                            <div>
+                                <i class="fa fa-columns" ></i>
+                                <span>{{ 'entity.Assignment.nb_fields'|trans }} : {{ row.nb_fields }}</span>
+                            </div>
+
+                        </a>
+                    </div>
+                {% endfor %}
+
+            <div class="col-md-4 mpssblock">
+                <div class="mpcontent text-center">
+                    <p>{{ 'entity.Task.and_x_more'|trans({'%x%': (nbTodoTasks - nextTodoTasks|length)}) }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="mpblock row">
+        <h4>Todo : </h4>
+        <div class="mpcontent">
+            <ul>
+                <li>Liste tâche en cours <span class="label label-success">ok</span></li>
+                <li>Liste d'attente <span class="label label-success">ok</span></li>
+                <li>Pick tâche <span class="label label-success">ok</span></li>
+                <li>Fill tâche <span class="label label-success">ok</span></li>
+                <li>Afficher graphiques sur perf user <span class="label label-warning">todo</span></li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

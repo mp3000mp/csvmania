@@ -1,0 +1,30 @@
+{% extends 'layouts/admin.html.twig' %}
+
+{% block title %}{{ 'entity.Content.add'|trans }}{% endblock %}
+
+{% block content %}
+
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success">{{ flashMessage|trans }}</div>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('danger') %}
+        <div class="alert alert-danger">{{ flashMessage|trans }}</div>
+    {% endfor %}
+
+    <div class="mpblock row">
+        <h4>{{ 'entity.Content.label'|trans }}</h4>
+        <div class="mpcontent">
+            <div class="content-message">{{ content.message }}</div>
+        </div>
+    </div>
+
+    <div class="mpblock row">
+        <h4>{{ feeling.label|capitalize }} <i class="fa fa-question-circle mptooltype" data-original-title="{{ ('entity.Feeling.helper'~feeling.id)|trans }}"></i></h4>
+        <div class="mpcontent">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

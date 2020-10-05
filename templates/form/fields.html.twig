@@ -1,0 +1,54 @@
+{% block date_widget %}
+    <div class="form-group">
+        <div class="hidden">
+            <input type="text" id="{{ id }}_day" name="{{ full_name }}[day]" value="{{ data|date('j') }}" />
+            <input type="text" id="{{ id }}_month" name="{{ full_name }}[month]" value="{{ data|date('n') }}" />
+            <input type="text" id="{{ id }}_year" name="{{ full_name }}[year]" value="{{ data|date('Y') }}" />
+        </div>
+        <input value="{{ data|date('Y-m-d') }}" name="{{ id }}" class="flatpickr form-control" type="text" placeholder="2011-12-24" {{ required ? 'required="required"' : '' }} data-input />
+    </div>
+{% endblock %}
+
+{% block csv_widget %}
+    <div class="form-group dndFile">
+        <textarea id="{{ id }}" name="{{ full_name }}" class="hidden" {{ required ? 'required="required"' : '' }}>{{ data }}</textarea>
+        <input id="tt" class="hidden" type="file" />
+        {% if errors|length > 0 %}
+            <span>{{ error.message }}</span>
+        {% endif %}
+        <div class="dndholder dnddefault form-control">
+            <span>{{ 'dnd_file.drop_zone'|trans }}</span>
+            <span>{{ 'dnd_file.success'|trans }}</span>
+            <span>{{ 'dnd_file.bad_format'|trans }}</span>
+            <span>{{ 'form.required'|trans }}</span>
+        </div>
+    </div>
+{% endblock %}
+
+{% block fields_widget %}
+    <div class="form-group mpFields">
+        <select id="{{ id }}" name="{{ full_name }}" multiple="multiple" class="hidden" {{ required ? 'required="required"' : '' }}>
+            {% for choice in choices %}
+                <option selected="selected" value="{{ choice.value }}">{{ choice.label }}</option>
+            {% endfor %}
+        </select>
+        <div class="mpFieldsUI form-control">
+            {% for choice in choices %}
+                <span class="badge badge-success">{{ choice.label }}</span>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block feeling_widget %}
+    <div class="form-group text-center">
+        <input id="{{ id }}" type="range" min="0" max="100" value="{{ data }}" name="{{ full_name }}" {{ required ? 'required="required"' : '' }} data-input />
+        <span class="slider-g">{{ 'entity.Feeling.helper5min'|trans }}</span><span class="slider-d">{{ 'entity.Feeling.helper5max'|trans }}</span>
+    </div>
+{% endblock %}
+
+{% block submit_widget %}
+    <div class="form-group text-center">
+        <input class="btn btn-primary" value="{{ 'form.submit'|trans }}" type="submit" />
+    </div>
+{% endblock %}

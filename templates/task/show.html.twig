@@ -1,0 +1,92 @@
+{% extends 'layouts/site.html.twig' %}
+
+{% block title %}{{ 'task.label'|trans }} {{ task.name }}{% endblock %}
+
+{% block content %}
+
+
+    <div class="mpblock row">
+        <h4>Todo : </h4>
+        <div class="mpcontent">
+            <ul>
+                <li>Tout refaire : <span class="label label-info">todo</span></li>
+                <li>pouvoir modifier priorité : <span class="label label-info">todo</span></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="mpblock row">
+        <h4>{{ 'show.info_gen'|trans }}</h4>
+        <div class="mpcontent">
+
+            <h1><span>Tâche {{ task.name }}</span>
+                <div class="bars">
+                    <div class="progress progress-task mptooltype" data-toggle="tooltype" data-original-title="{{ '' }}/{{ contents|length }}">
+                        <div id="barDone" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ 0 }}" aria-valuemax="{{ contents|length }}">{{ (  (0/contents|length)*100)|round(2) }}%</div>
+                    </div>
+                    <span class="badge">Done</span>
+
+                    <div class="progress progress-task mptooltype" data-toggle="tooltype" data-original-title="{{ '' }}/{{ contents|length }}">
+                        <div id="barValidated" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ 0 }}" aria-valuemax="{{ contents|length }}">{{ (  (0/contents|length)*100)|round(2) }}%</div>
+                    </div>
+                    <span class="badge">Validated</span>
+                </div>
+            </h1>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>{{ 'task.created_by'|trans }} : </strong>
+                    <span><i class="fa fa-user"></i> {{ task.createdBy.firstName }} {{ task.createdBy.lastName }} {{ 'entity.at'|trans }} <i class="fa fa-calendar"></i> {{ task.createdAt|date('Y-m-d h:i:s') }}</span>
+                </div>
+                <div class="col-md-6">
+                    <strong>{{ 'task.assigned_to'|trans }} : </strong>
+                    {% for assignment in assignments %}
+                        <span><i class="fa fa-user"></i> {{  assignment.assignedTo.firstName }} {{ assignment.assignedTo.lastName }} {{ 'entity.at'|trans }} <i class="fa fa-calendar"></i> {{ assignment.assignedAt|date('Y-m-d h:i:s') }}</span><br />
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>{{ '' }} : </strong>
+                    <span><i class="fa fa-calendar"></i> {{ '' }}</span>
+                </div>
+                <div class="col-md-6">
+                    <strong>{{ 'task.validated_by'|trans }} : </strong>
+                    <span><i class="fa fa-user"></i> {{ '' }} {{ '' }} {{ 'entity.at'|trans }} <i class="fa fa-calendar"></i> {{ '' }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mpblock row">
+        <h4>{{ 'content.list'|trans }}</h4>
+        <div class="mpcontent">
+            <table id="tokenedit" class="mpstandard mp-table-ajax" data-url="{{ path('token_edit') }}">
+                <thead>
+                <tr>
+                    <th>{{ 'token.name'|trans }}</th>
+                    <th>{{ 'token.google'|trans }}</th>
+                    <th>{{ 'token.input'|trans }}</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th>{{ 'token.admin_comment'|trans }}</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for content in contents %}
+                    <tr data-id="{{ content.id }}">
+                        <td>{{ content.message }}</td>
+                        <td><a target="_blank" href="#">todo google trad</a></td>
+                        {% for answer in content.answers %}
+                            <td data-prop="answer"><input type="text" value="{{ answer.id }}" /></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

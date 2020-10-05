@@ -1,0 +1,42 @@
+{% extends 'layouts/site.html.twig' %}
+
+{% block title %}{{ 'login.change_pwd'|trans }}{% endblock %}
+
+{% block content %}
+    <div class="row text-center">
+        <h1><i class="fa fa-user"></i> {{ app.user.firstName }} {{ app.user.lastName }}</h1>
+        <p class="lead"><i class="fa fa-envelope"></i> {{ app.user.userName }}</p>
+        <a href="#passForm" role="button" data-toggle="collapse" class="btn btn-primary my-2">{{ 'login.change_pwd'|trans }}</a>
+        <br /><br />
+
+        <form id="passForm" class="{{ error ? 'collapse in' : 'collapse' }} col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" action="{{ path("change_password") }}" method="POST">
+
+            <div class="form-group">
+                <input type="password" class="form-control" name="_current_password" required="required" id="current-password" placeholder="{{ 'login.current_password'|trans }}" />
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control" name="_new_password" required="required" id="new-password" placeholder="{{ 'login.new_password'|trans }}" />
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control" name="_confirm_password" required="required" id="confirm-password" placeholder="{{ 'login.confirm_password'|trans }}" />
+            </div>
+
+            {% if error %}
+                <div class="alert-danger">{{ error|trans }}</div>
+                <br />
+            {% endif %}
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+            <button type="submit" class="pull-right btn btn-primary">
+                {{ 'form.submit'|trans }} <i class="fa fa-sign-in"></i>
+            </button>
+
+        </form>
+    </div>
+{% endblock %}
+
+
+

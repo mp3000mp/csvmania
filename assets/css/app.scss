@@ -1,0 +1,317 @@
+// variables bootstrap
+
+// boutons
+$btn-primary-bg: lighten(black, 10%);
+$btn-primary-border: lighten(#9d9d9d, 10%);
+$btn-primary-color: white;
+
+// menu
+$navbar-inverse-color: white;
+$navbar-inverse-bg: black;
+$navbar-inverse-border: none;
+
+// couleurs
+$c_green: #5bcc36;
+$c_red: #cc2323;
+$c_orange: #cc562b;
+$c_blue: #6678cc;
+
+
+
+  // chemin fonts
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$fa-font-path: "~font-awesome/fonts";
+
+  // imports
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import "~font-awesome/scss/font-awesome.scss";
+@import "~flatpickr/dist/flatpickr.css";
+@import "~rangeslider.js/dist/rangeslider.css";
+
+
+
+header{
+  min-height: 50px;
+  margin-bottom: 25px;
+}
+
+nav{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99999;
+}
+nav .container-fluid{
+  border-bottom: 1px solid white !important;
+}
+nav .navbar-toggle{
+  margin: 0;
+  line-height: 0;
+  font-size: 210%;
+}
+nav .navbar-toggle:hover{
+  color: white;
+  border-color: white;
+}
+.navbar-header{
+  color: #9d9d9d;
+}
+
+#flags a{
+  text-align: center;
+}
+#flags img{
+  height: 20px;
+}
+#flags{
+  min-width: 102px;
+}
+
+
+
+/* menu ordi */
+@media (min-width: 768px) {
+  #menuProfile > a{
+    margin-right: -15px;
+  }
+}
+
+/* menu smartphone */
+@media (max-width: 768px) {
+  #flags li{
+    display: inline-block;
+    margin-left: 15px;
+  }
+  #flags li,
+  #flags li > a{
+    padding: 5px;
+  }
+
+  #flags li > a:hover{
+    background-color: #2a2a2a;
+  }
+}
+
+
+
+
+
+
+.form-error-message{
+  color: $c_orange;
+}
+
+.badge-danger{
+  background-color: $c_orange;
+}
+
+.form-group legend{
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  border-bottom: none;
+}
+
+
+
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+  background-color: black;
+  color: $navbar-inverse-link-color;
+  border-top: 1px solid white;
+}
+footer p{
+  margin: 0 60px;
+}
+footer a{
+  color: $navbar-inverse-link-color;
+}
+footer a:hover{
+  color: white;
+  text-decoration: none;
+}
+#footer-phantom{
+  height: 30px;
+}
+
+
+.required:after {
+  content: "*";
+}
+
+
+
+
+
+
+
+
+/* drag and drop file */
+.dndFile .dndholder {
+  height: 100px;
+  text-align: center;
+  background-color: #b3b4cc;
+}
+.dndFile .dnddefault{
+  border: 10px dashed #333333 !important;
+}
+.dndFile .dndsuccess,
+.dndFile .dndhover{
+  border: 10px dashed $c_green !important;
+  background-color: #baccc5 !important;
+}
+.dndFile .dndbadformat,
+.dndFile .dndrequired{
+  border: 10px dashed $c_orange !important;
+  background-color: #ccb4b0 !important;
+}
+.dndFile .dndholder span{
+  display: none;
+  margin-top: 25px;
+  font-weight: bold;
+}
+.dndFile .dnddefault span:first-child,
+.dndFile .dndhover span:first-child,
+.dndFile .dndsuccess span:nth-child(2),
+.dndFile .dndbadformat span:nth-child(3),
+.dndFile .dndrequired span:nth-child(4){
+  display: block;
+}
+
+
+.progress-task{
+  width: 125px;
+  display: inline-table;
+}
+.progress{
+  margin-bottom: 0px;
+}
+.progress-bar > span{
+  padding-left: 5px;
+}
+.prio1{
+  font-weight: bold;
+  color: $c_orange;
+}
+
+
+.mpblock > h4{
+  border-bottom: 1px dashed white;
+  margin: 0;
+  padding: 3px 5px;
+}
+.mpblock{
+  border: 1px solid white;
+  margin-bottom: 15px;
+  background-color: black;
+  color: white;
+}
+.mpcontent{
+  padding: 8px 10px;
+}
+.mpcontent h5{
+  text-align: center;
+  margin: 3px 0;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.mpblock h1 .bars{
+  display: inline-block;
+}
+
+.mpssblock{
+  padding: 8px 10px;
+}
+
+.mpssblock > .mpcontent{
+  display: block;
+  border-radius: 12px;
+  background-color: #9d9d9d;
+  color: white;
+  min-height: 70px;
+}
+.mpssblock > .mpcontent:hover{
+  cursor: pointer;
+  text-decoration: none;
+  background: radial-gradient(ellipse at center, #c5c5c5, #9d9d9d);
+}
+
+
+
+table.mpstandard{
+  width: 100%;
+  margin: 10px auto;
+}
+.mpstandard td,
+.mpstandard th{
+  border: 1px solid white;
+  text-align: center;
+}
+
+.mpstandard tbody tr:nth-child(even){
+  background-color: #181818;
+}
+.mpstandard tbody tr:nth-child(odd){
+  background-color: #212121;
+}
+.mpstandard tbody tr:hover{
+  background-color: black;
+}
+.mpstandard input{
+  color: black;
+  transition: background-color 0.5s ease;
+}
+
+
+
+
+input.flatpickr[readonly]{
+  background-color: white!important;
+}
+
+
+/* fields form type */
+.mpFields .badge{
+  cursor: pointer;
+}
+
+.badge-success{
+  background-color: $c_green;
+}
+.badge-danger{
+  background-color: $c_orange;
+}
+
+
+.slider-g{
+  float: left;
+}
+.slider-d{
+  float: right;
+}
+.rangeslider{
+  background: linear-gradient(to left, #5bcc36, #cc562b);
+}
+
+
+
+
+
+
+
+.content-message{
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: $c_blue;
+  padding: 5px 15px;
+  margin: 5px auto;
+  color: white;
+  font-weight: bold;
+}
